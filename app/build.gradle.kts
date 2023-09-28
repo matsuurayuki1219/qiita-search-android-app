@@ -30,8 +30,13 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_BASE_URL", "\"https://qiita.com/\"")
+        }
+        debug {
+            buildConfigField("String", "API_BASE_URL", "\"https://qiita.com/\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
