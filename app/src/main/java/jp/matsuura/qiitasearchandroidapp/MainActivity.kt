@@ -23,6 +23,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import jp.matsuura.qiitasearchandroidapp.ui.home.HomeScreen
 import jp.matsuura.qiitasearchandroidapp.ui.theme.QiitaSearchAndroidAppTheme
@@ -30,6 +31,7 @@ import jp.matsuura.qiitasearchandroidapp.ui.theme.QiitaSearchAndroidAppTheme
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContent {
             QiitaSearchAndroidAppTheme {
