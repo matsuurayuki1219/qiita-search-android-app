@@ -27,7 +27,6 @@ object ApiClientModule {
                 val newRequest = chain.request().newBuilder()
                     .addHeader("Accept", "application/json")
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization", "Bearer 5dff87df58e30d93b483f7f346537330c77e4492")
                     .build()
                 chain.proceed(newRequest)
             }
