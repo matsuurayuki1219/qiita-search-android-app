@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">QiitaSearchAndroidApp</string>
+
+
+    <!-- common -->
+    <string name="common_unknown_error_message">エラーが発生しました</string>
+    <string name="common_network_error_message">通信エラーが発生しました</string>
+
+    <!-- home -->
+    <string name="home_top_app_bar_text">Qiita記事検索</string>
+    <string name="home_text_filed_placeholder">記事を検索しよう</string>
+
 </resources>
