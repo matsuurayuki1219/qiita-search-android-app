@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jp.matsuura.qiitasearchandroidapp.domain.GetQiitaArticlesUseCase
+import jp.matsuura.qiitasearchandroidapp.exception.LimitedAccessException
 import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
@@ -49,10 +50,16 @@ class HomeViewModel @Inject constructor(
 
     fun onError(error: Throwable) {
         viewModelScope.launch {
-            if (error is IOException) {
-                _uiEvent.send(UiEvent.NetworkError)
-            } else {
-                _uiEvent.send(UiEvent.Error(error = error))
+            when (error) {
+                is LimitedAccessException -> {
+                    _uiEvent.send(UiEvent.LimitedAccessError)
+                }
+                is IOException -> {
+                    _uiEvent.send(UiEvent.NetworkError)
+                }
+                else -> {
+                    _uiEvent.send(UiEvent.Error(error = error))
+                }
             }
         }
     }
@@ -60,5 +67,6 @@ class HomeViewModel @Inject constructor(
     sealed interface UiEvent {
         object NetworkError : UiEvent
         data class Error(val error: Throwable) : UiEvent
+        object LimitedAccessError : UiEvent
     }
 }

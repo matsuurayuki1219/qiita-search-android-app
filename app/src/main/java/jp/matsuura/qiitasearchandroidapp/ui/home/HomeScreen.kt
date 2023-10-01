@@ -36,6 +36,9 @@ fun HomeScreen(
 
     viewModel.uiEvent.observeWithLifecycle {
         when (it) {
+            is HomeViewModel.UiEvent.LimitedAccessError -> {
+                snackbarHostState.showSnackbar(context.getString(R.string.common_limited_access_error_message))
+            }
             is HomeViewModel.UiEvent.NetworkError -> {
                 snackbarHostState.showSnackbar(context.getString(R.string.common_network_error_message))
             }

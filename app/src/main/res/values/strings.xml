@@ -5,6 +5,7 @@
     <!-- common -->
     <string name="common_unknown_error_message">エラーが発生しました</string>
     <string name="common_network_error_message">通信エラーが発生しました</string>
+    <string name="common_limited_access_error_message">アクセス数が超過しました</string>
 
     <!-- home -->
     <string name="home_top_app_bar_text">Qiita記事検索</string>

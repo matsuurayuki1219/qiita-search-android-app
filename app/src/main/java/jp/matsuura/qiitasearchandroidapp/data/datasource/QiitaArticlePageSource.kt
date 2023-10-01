@@ -4,7 +4,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import jp.matsuura.qiitasearchandroidapp.data.api.QiitaApi
 import jp.matsuura.qiitasearchandroidapp.data.entity.QiitaArticleEntity
-import jp.matsuura.qiitasearchandroidapp.ext.requireBody
+import jp.matsuura.qiitasearchandroidapp.exception.LimitedAccessException
+import retrofit2.HttpException
 
 class QiitaArticlePageSource(
     private val api: QiitaApi,
@@ -20,12 +21,21 @@ class QiitaArticlePageSource(
         val next = page + 1
         val prev = if (page == 1) null else page - 1
         return try {
-            val resp = api.getArticles(page = page, perPage = 10, query = query).requireBody()
-            LoadResult.Page(
-                data = resp,
-                prevKey = prev,
-                nextKey = next,
-            )
+            val resp = api.getArticles(page = page, perPage = 10, query = query)
+            val body = resp.body()
+            if (body != null) {
+                LoadResult.Page(
+                    data = body,
+                    prevKey = prev,
+                    nextKey = next,
+                )
+            } else {
+                if (resp.code() == 403) {
+                    throw LimitedAccessException()
+                } else {
+                    throw HttpException(resp)
+                }
+            }
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
