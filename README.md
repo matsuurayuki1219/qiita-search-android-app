@@ -18,6 +18,8 @@ MVVM ✖️ Clean Architecture
 - Jetpack Compose
 - Dagger Hilt
 - Retrofit
+- Kotlin Coroutine
+- Kotlin Flow
 - Moshi
 - Splash Screen API
 - Timber
