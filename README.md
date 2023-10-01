@@ -1,7 +1,7 @@
 # QiitaSearchAndroidApp
 
 ## OverView
-By using this application, you can seach the qiita articles.
+By using this application, you can search the qiita articles.
 
 ## ScreenShot
 | Light | Dark |
