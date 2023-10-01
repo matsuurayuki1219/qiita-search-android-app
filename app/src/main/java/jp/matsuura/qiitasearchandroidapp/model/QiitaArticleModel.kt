@@ -1,6 +1,6 @@
 package jp.matsuura.qiitasearchandroidapp.model
 
-data class QiitaItemModel(
+data class QiitaArticleModel(
     val id: String,
     // TODO: 必要
     val title: String,

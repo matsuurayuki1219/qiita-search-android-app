@@ -4,26 +4,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import androidx.paging.map
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jp.matsuura.qiitasearchandroidapp.domain.GetQiitaItemUseCase
-import jp.matsuura.qiitasearchandroidapp.model.QiitaItemModel
+import jp.matsuura.qiitasearchandroidapp.domain.GetQiitaArticlesUseCase
+import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    getQiitaItem: GetQiitaItemUseCase,
+    getQiitaArticles: GetQiitaArticlesUseCase,
 ): ViewModel() {
 
     private val _uiEvent = Channel<UiEvent>(Channel.CONFLATED)
@@ -32,9 +27,9 @@ class HomeViewModel @Inject constructor(
     private val queryChanged = Channel<String?>(Channel.CONFLATED)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val qiitaItems: Flow<PagingData<QiitaItemModel>> =
+    val qiitaArticles: Flow<PagingData<QiitaArticleModel>> =
         queryChanged.receiveAsFlow().flatMapLatest {
-            getQiitaItem(query = it)
+            getQiitaArticles(query = it)
         }.cachedIn(viewModelScope)
 
     init {

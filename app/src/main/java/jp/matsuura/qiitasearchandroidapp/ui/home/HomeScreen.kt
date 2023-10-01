@@ -9,13 +9,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
@@ -24,7 +20,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import jp.matsuura.qiitasearchandroidapp.R
 import jp.matsuura.qiitasearchandroidapp.ext.observeWithLifecycle
-import jp.matsuura.qiitasearchandroidapp.model.QiitaItemModel
+import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import jp.matsuura.qiitasearchandroidapp.ui.common.AppTopSearchBar
 import jp.matsuura.qiitasearchandroidapp.ui.common.LoadingView
 import jp.matsuura.qiitasearchandroidapp.ui.home.components.QiitaItem
@@ -50,7 +46,7 @@ fun HomeScreen(
         }
     }
 
-    val qiitaItems = viewModel.qiitaItems.collectAsLazyPagingItems()
+    val qiitaItems = viewModel.qiitaArticles.collectAsLazyPagingItems()
     HomeScreen(
         qiitaItems = qiitaItems,
         snackbarHostState = snackbarHostState,
@@ -63,7 +59,7 @@ fun HomeScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun HomeScreen(
-    qiitaItems: LazyPagingItems<QiitaItemModel>,
+    qiitaItems: LazyPagingItems<QiitaArticleModel>,
     snackbarHostState: SnackbarHostState,
     onItemClick: (url: String) -> Unit,
     onEditDone: (String) -> Unit,

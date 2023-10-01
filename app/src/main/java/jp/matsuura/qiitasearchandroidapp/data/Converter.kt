@@ -1,13 +1,13 @@
 package jp.matsuura.qiitasearchandroidapp.data
 
-import jp.matsuura.qiitasearchandroidapp.data.entity.QiitaItemEntity
+import jp.matsuura.qiitasearchandroidapp.data.entity.QiitaArticleEntity
 import jp.matsuura.qiitasearchandroidapp.data.entity.TagEntity
 import jp.matsuura.qiitasearchandroidapp.data.entity.UserEntity
-import jp.matsuura.qiitasearchandroidapp.model.QiitaItemModel
+import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import jp.matsuura.qiitasearchandroidapp.model.TagModel
 import jp.matsuura.qiitasearchandroidapp.model.UserModel
 
-fun QiitaItemEntity.toModel() = QiitaItemModel(
+fun QiitaArticleEntity.toModel() = QiitaArticleModel(
     body = body,
     commentsCount = commentsCount,
     createdAt = createdAt,

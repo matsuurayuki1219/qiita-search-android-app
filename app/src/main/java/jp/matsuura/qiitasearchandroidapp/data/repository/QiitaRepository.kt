@@ -5,9 +5,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import jp.matsuura.qiitasearchandroidapp.data.api.QiitaApi
-import jp.matsuura.qiitasearchandroidapp.data.datasource.QiitaItemPageSource
+import jp.matsuura.qiitasearchandroidapp.data.datasource.QiitaArticlePageSource
 import jp.matsuura.qiitasearchandroidapp.data.toModel
-import jp.matsuura.qiitasearchandroidapp.model.QiitaItemModel
+import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import jp.matsuura.qiitasearchandroidapp.utility.Const
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 class QiitaRepository @Inject constructor(
     private val api: QiitaApi,
 ) {
-    fun getItems(query: String?): Flow<PagingData<QiitaItemModel>> {
+    fun getArticles(query: String?): Flow<PagingData<QiitaArticleModel>> {
         return Pager(
             config = PagingConfig(
                 pageSize = Const.PAGING3_PAGE_SIZE,
@@ -26,7 +26,7 @@ class QiitaRepository @Inject constructor(
                 maxSize = Const.PAGING3_MAX_SIZE,
             ),
             pagingSourceFactory = {
-                QiitaItemPageSource(api = api, query = query)
+                QiitaArticlePageSource(api = api, query = query)
             },
         ).flow.map { pagingData ->
             pagingData.map { it.toModel() }
