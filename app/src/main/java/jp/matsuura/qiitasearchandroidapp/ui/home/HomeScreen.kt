@@ -23,7 +23,7 @@ import jp.matsuura.qiitasearchandroidapp.ext.observeWithLifecycle
 import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import jp.matsuura.qiitasearchandroidapp.ui.common.AppTopSearchBar
 import jp.matsuura.qiitasearchandroidapp.ui.common.LoadingView
-import jp.matsuura.qiitasearchandroidapp.ui.home.components.QiitaItem
+import jp.matsuura.qiitasearchandroidapp.ui.home.components.QiitaArticleItem
 import jp.matsuura.qiitasearchandroidapp.ui.theme.QiitaSearchAndroidAppTheme
 
 @Composable
@@ -88,7 +88,7 @@ private fun HomeScreen(
                 LazyColumn {
                     items(qiitaItems) { qiitaItem ->
                         qiitaItem?.let { item ->
-                            QiitaItem(
+                            QiitaArticleItem(
                                 modifier = Modifier.fillMaxWidth(),
                                 qiitaItem = item,
                                 onClick = onItemClick,

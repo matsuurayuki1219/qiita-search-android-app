@@ -32,7 +32,7 @@ import jp.matsuura.qiitasearchandroidapp.model.UserModel
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun QiitaItem(
+fun QiitaArticleItem(
     modifier: Modifier = Modifier,
     qiitaItem: QiitaArticleModel,
     onClick: (url: String) -> Unit,
@@ -121,8 +121,8 @@ fun QiitaItem(
 
 @Preview(showBackground = true)
 @Composable
-private fun QiitaItemPreview() {
-    QiitaItem(
+private fun QiitaArticleItemPreview() {
+    QiitaArticleItem(
         qiitaItem = QiitaArticleModel(
             id = "1",
             title = "Jetpack Composeの基本について",
