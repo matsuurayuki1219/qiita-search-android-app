@@ -129,21 +129,15 @@ private fun QiitaArticleItemPreview() {
             createdAt = "2023-09-28T18:09:46+09:00",
             updatedAt = "2023-09-28T18:09:46+09:00",
             likesCount = 10,
-            body = "body",
-            commentsCount = 2,
-            renderedBody = "renderedBody",
             tags = listOf(
                 TagModel(
                     name = "iOS",
-                    versions = emptyList(),
                 ),
                 TagModel(
                     name = "Android",
-                    versions = emptyList(),
                 ),
                 TagModel(
                     name = "MVVM",
-                    versions = emptyList(),
                 ),
             ),
             url = "",
@@ -151,9 +145,6 @@ private fun QiitaArticleItemPreview() {
                 id = "1",
                 name = "matsuurayuki",
                 profileImageUrl = "",
-                followeesCount = 1,
-                followersCount = 2,
-                itemsCount = 23,
             )
         ),
         onClick = {},

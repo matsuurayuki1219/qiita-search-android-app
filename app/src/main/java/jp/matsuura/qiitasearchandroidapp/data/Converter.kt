@@ -8,12 +8,9 @@ import jp.matsuura.qiitasearchandroidapp.model.TagModel
 import jp.matsuura.qiitasearchandroidapp.model.UserModel
 
 fun QiitaArticleEntity.toModel() = QiitaArticleModel(
-    body = body,
-    commentsCount = commentsCount,
     createdAt = createdAt,
     id = id,
     likesCount = likesCount,
-    renderedBody = renderedBody,
     tags = tags.map { it.toModel() },
     title = title,
     updatedAt = updatedAt,
@@ -23,14 +20,10 @@ fun QiitaArticleEntity.toModel() = QiitaArticleModel(
 
 fun TagEntity.toModel() = TagModel(
     name = name,
-    versions = versions,
 )
 
 fun UserEntity.toModel() = UserModel(
-    followersCount = followersCount,
-    followeesCount = followeesCount,
     id = id,
-    itemsCount = itemsCount,
     name = name,
     profileImageUrl = profileImageUrl,
 )
