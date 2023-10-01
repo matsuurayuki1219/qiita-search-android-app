@@ -26,9 +26,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import jp.matsuura.qiitasearchandroidapp.R
+import jp.matsuura.qiitasearchandroidapp.ext.toAppString
 import jp.matsuura.qiitasearchandroidapp.model.QiitaArticleModel
 import jp.matsuura.qiitasearchandroidapp.model.TagModel
 import jp.matsuura.qiitasearchandroidapp.model.UserModel
+import java.time.OffsetDateTime
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -73,7 +75,7 @@ fun QiitaArticleItem(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = qiitaItem.createdAt,
+                        text = qiitaItem.createdAt.toAppString(),
                         fontSize = 14.sp,
                     )
                 }
@@ -126,8 +128,8 @@ private fun QiitaArticleItemPreview() {
         qiitaItem = QiitaArticleModel(
             id = "1",
             title = "Jetpack Composeの基本について",
-            createdAt = "2023-09-28T18:09:46+09:00",
-            updatedAt = "2023-09-28T18:09:46+09:00",
+            createdAt = OffsetDateTime.now(),
+            updatedAt = OffsetDateTime.now(),
             likesCount = 10,
             tags = listOf(
                 TagModel(
